@@ -1,5 +1,5 @@
 # Scapy
-![Scapy Logo](/assets/scapy-logo.png)
+![Scapy Logo](/scapy/assets/scapy-logo.png)
 
 From [Scapy.net](https://scapy.net):
 
