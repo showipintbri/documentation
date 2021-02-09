@@ -23,7 +23,7 @@ Add this to your common path's:
  echo $PATH
  
  # Make changes permanent:
- echo "export PATH=$PATH:/usr/local/zeek/bin" >> .bashrc
+ echo "export PATH=$PATH:/opt/zeek/bin" >> .bashrc
 ```
 
 ## Configuration Files:
