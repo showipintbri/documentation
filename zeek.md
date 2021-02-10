@@ -12,19 +12,28 @@ Instructions/downloads are available for: CentOS, Debian, Fedora, openSUSE, SLE 
  echo 'deb http://download.opensuse.org/repositories/security:/zeek/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/security:zeek.list
  curl -fsSL https://download.opensuse.org/repositories/security:zeek/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/security_zeek.gpg > /dev/null
  sudo apt update
+ 
+ # For the latest feature release:
  sudo apt install zeek
+ 
+ # For the latest Release Candidate:
+ sudo apt install zeek-rc
+ 
+ # For the recent LTS:
+ sudo apt install zeek-lts
 ```
 
-**NOTE:** Zeek installes to: `/opt/zeek/`
+**NOTE:** Zeek installes to: `/opt/zeek/`. For other version change `zeek` --> `zeek-rc` or `zeek-lts`.
 
-Add this to your common path's:
+Add this to your common path:
 ```bash
+# This setting is per session. It will not persist beyond your session.
  export PATH=$PATH:/opt/zeek/bin
  echo $PATH
  
  # Make changes permanent:
  echo "export PATH=$PATH:/opt/zeek/bin" >> .bashrc
-```
+ ```
 
 ## Configuration Files:
 #### `/opt/zeek/etc/node.cfg`
@@ -81,14 +90,12 @@ interface=eth0
 ## Zeek Package Manager
 
 #### Install `zkg`
+
+**NOTE:** Zeek 4.0 comes with zkg already packaged. The below is for Zeek < 4.0
 ```
 apt install python3-pip
 pip3 install zkg
 
 # After installation:
 zkg autoconfig
-
-
-
-
-
+```
