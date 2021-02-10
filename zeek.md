@@ -141,7 +141,7 @@ root@zeek:/pcaps/4/a#
 ```
 
 #### Tell Zeek to load installed 'packages'
-Edit the `/opt/zeek-rc/share/zeek/site/local.zeek` file:
+Edit the `/opt/zeek/share/zeek/site/local.zeek` file:
 ```bash
 # For Zeek <  4.0 add the line
 # For zeek >= 4.0 un-comment the line at the bottom
@@ -158,3 +158,23 @@ zeek -C -r filename.pcap local
 # Load individual packages
 zeek -C -r filename.pcap geoip-conn
 ```
+
+## Zeek Output
+If you intend to ingest Zeek logs into a SIEM or logging platform, converting them to JSON is probably the most ubiquitous format.
+
+#### Tell Zeek to load JSON script
+Edit the `/opt/zeek/share/zeek/site/local.zeek` file:
+```bash
+# Output all logs as JSON
+@load policy/tuning/json-logs.zeek
+``` 
+Restart Zeek using the script:
+```
+zeekctl deploy
+```
+
+If you are reading in a PCAP and just want JSON this time but not all the time. Leave your '/opt/zeek/share/zeek/site/local.zeek' alone and instead invoke the script when needed:
+```
+zeek -C -r filename.pcap policy/tuning/json-logs
+```
+Now, instead of parsing the logs with `zeek-cut` you'll need to use `jq`.
