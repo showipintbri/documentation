@@ -23,11 +23,11 @@ Instructions/downloads are available for: CentOS, Debian, Fedora, openSUSE, SLE 
  sudo apt install zeek-lts
 ```
 
-**NOTE:** Zeek installes to: `/opt/zeek/`. For other version change `zeek` --> `zeek-rc` or `zeek-lts`.
+**NOTE:** Zeek installs to: `/opt/zeek/`. For other version change `zeek` --> `zeek-rc` or `zeek-lts`.
 
 Add this to your common path:
 ```bash
-# This setting is per session. It will not persist beyond your session.
+# This setting is per session.
  export PATH=$PATH:/opt/zeek/bin
  echo $PATH
  
@@ -35,8 +35,8 @@ Add this to your common path:
  echo "export PATH=$PATH:/opt/zeek/bin" >> .bashrc
  ```
 
-## Configuration Files:
-#### `/opt/zeek/etc/node.cfg`
+## Configuration Files
+#### `/opt/zeek/etc/node.cfg`:
 ```bash
 # Example ZeekControl node configuration.
 #
@@ -76,7 +76,7 @@ interface=eth0
 #interface=eth0
 ```
 
-#### `/opt/zeek/etc/networks.cfg`
+#### `/opt/zeek/etc/networks.cfg`:
 ```bash
 # List of local networks in CIDR notation, optionally followed by a
 # descriptive tag.
@@ -92,10 +92,66 @@ interface=eth0
 #### Install `zkg`
 
 **NOTE:** Zeek 4.0 comes with zkg already packaged. The below is for Zeek < 4.0
-```
+```bash
 apt install python3-pip
 pip3 install zkg
 
 # After installation:
 zkg autoconfig
+```
+
+#### Config File
+The Zeek Package Manager config file is in: `$HOME/.zkg/config`
+
+Be sure the `script_dir` & `plugin_dir` are correct for your installation.
+
+**NOTE:** `state_dir` should reflect `$HOME/.zkg`
+```bash
+[sources]
+zeek = https://github.com/zeek/packages
+
+[paths]
+state_dir = /root/.zkg
+script_dir = /opt/zeek/share/zeek/site
+plugin_dir = /opt/zeek/lib/zeek/plugins
+zeek_dist =
+```
+
+#### Example: Install a package
+```bash
+# Search for package
+zkg search geoip
+
+# Install a package
+zkg install geoip-conn
+
+## EXAMPLE:
+root@zeek:/pcaps/4/a# zkg install geoip-conn
+The following packages will be INSTALLED:
+  zeek/brimsec/geoip-conn (master)
+
+Proceed? [Y/n] Y
+Installing "zeek/brimsec/geoip-conn"......
+Installed "zeek/brimsec/geoip-conn" (master)
+Loaded "zeek/brimsec/geoip-conn"
+root@zeek:/pcaps/4/a#
+```
+
+#### Tell Zeek to load installed 'packages'
+Edit the `/opt/zeek-rc/share/zeek/site/local.zeek` file:
+```bash
+# For Zeek <  4.0 add the line
+# For zeek >= 4.0 un-comment the line at the bottom
+@load packages
+```
+
+#### Using the packages
+- If you are running zeek collecting packet from a live NIC use the `zeekctl deploy` command.
+- If you plan on using the packages with reading in PCAP's you need to invoke the package individually or tell Zeek to load all packages using the `local` script:
+```
+# Load all installed packages
+zeek -C -r filename.pcap local
+
+# Load individual packages
+zeek -C -r filename.pcap geoip-conn
 ```
