@@ -119,6 +119,9 @@ zeek_dist =
 
 #### Example: Install a package
 ```bash
+# Llist already installed packages
+zkg list
+
 # Search for package
 zkg search geoip
 
