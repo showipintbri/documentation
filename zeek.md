@@ -117,6 +117,18 @@ plugin_dir = /opt/zeek/lib/zeek/plugins
 zeek_dist =
 ```
 
+#### Setting Environmental Variables
+```bash
+root@zeek:/home/anthony# zkg env
+export BROPATH=.:/opt/zeek/share/zeek:/opt/zeek/share/zeek/policy:/opt/zeek/share/zeek/site
+export BRO_PLUGIN_PATH=/opt/zeek/lib/zeek/plugins
+export ZEEKPATH=.:/opt/zeek/share/zeek:/opt/zeek/share/zeek/policy:/opt/zeek/share/zeek/site
+export ZEEK_PLUGIN_PATH=/opt/zeek/lib/zeek/plugins
+
+Be sure to add these to your `~/.bashrc` file:
+zkg env >> ~/.bashrc
+```
+
 #### Example: Install a package
 ```bash
 # Llist already installed packages
