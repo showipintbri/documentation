@@ -112,3 +112,18 @@ tshark -r onehour.pcap -Y 'dns.flags.response == 0' -T fields -e dns.qry.name | 
 ```
 "C:\Program Files\Wireshark\tshark.exe" -r onehour.pcap -Y "dns.flags.response == 0" -T fields -e dns.qry.name | sort /unique
 ```
+
+#### Dump only the payload from a specific host as HEX
+```
+c:\Program Files\Wireshark>tshark.exe -r "testtest.pcapng" -Y "ip.src==192.168.1.133" -T fields -e data.data > "C:\Users\TonyE\PCAP\src_payload.txt"
+
+# -r "testtest.pcapng": read in the file
+# -Y "ip.src==192.168.1.133": Use Wireshark Display Filtering to find the host
+# -T fields: format of output (this case I only want to see a field)
+# -e data.data: this is the field I want to dump
+# > "C:\Users\TonyE\PCAP\src_payload.txt": send output to specified file
+```
+
+
+
+
