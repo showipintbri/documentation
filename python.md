@@ -16,6 +16,10 @@ user@host:~/myapp$ source ./bin/activate
 
 # You're now in your Virtual Environment
 (myapp) user@host:~/myapp$
+
+# To leave your Virtual Environment
+(myapp) user@host:~/myapp$ deactivate
+user@host:~/myapp$
 ```
 
 ### IP Addresses
