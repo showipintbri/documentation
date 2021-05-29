@@ -18,3 +18,16 @@ user@host:~/myapp$ source ./bin/activate
 (myapp) user@host:~/myapp$
 ```
 
+### IP Addresses
+
+```
+import ipaddress
+
+for subnet in list(ipaddress.ip_network('192.168.0.0/22').subnets(new_prefix=24)):
+    print(subnet)
+    
+192.168.0.0/24
+192.168.1.0/24
+192.168.2.0/24
+192.168.3.0/24
+```
