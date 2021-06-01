@@ -2,13 +2,12 @@
 A collection of references because I always have to look them up.
 
 ### Important Notes:
+- You must using the same iperf code base on both the client and the server
 - Server must be running first!
 - Default Operation: Client pushes traffic to Server over TCP (simulated upload)
 - Simulate Download: Use the `-R` flag on the Client for '*reverse*'
 
 ## Download
-You must using the same iperf code base on both the client and the server.
-
 For both `iperf` & `iperf3`:
 - [https://iperf.fr/iperf-download.php](https://iperf.fr/iperf-download.php)
 
@@ -35,8 +34,18 @@ iperf3 -c xxx.xxx.xxx.xxx -P 8 -t 60
 
 ### `iperf3`: Additional Client Flags Worth Noting
 - `-u`      Use UDP
-- `-R`      Reverse: invoked from the client tells the Server to Send data to the client
+- `-R`      Reverse: invoked from the client tells the Server to Send data to the client, simulating a download
 
+### Public `iperf3` Servers:
+[https://iperf.fr/iperf-servers.php](https://iperf.fr/iperf-servers.php)
+- iperf.scottlinux.com
+```
+iperf3 -c iperf.scottlinux.com -P 8 -t 60
+```
+- iperf.he.net
+```
+iperf3 -c iperf.he.net -P 8 -t 60
+```
 
 ## Using `iperf`
 #### Server:
