@@ -1,7 +1,7 @@
 # `/bin/bash`
 
 
-## `for` Loop w/ `case` condition
+## `for` Loop w/ `case` condition: Download files using wget
 ```bash
 #!/bin/bash
 
@@ -25,3 +25,15 @@ exit 0
 
 ```
 
+
+## `for` Loop: Unzip a directory of files
+```bash
+#!/bin/bash
+
+for filename in ./*.gz
+do
+  unzip $filename
+done
+exit 0
+
+```
