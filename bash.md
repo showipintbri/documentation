@@ -1,7 +1,29 @@
 # `/bin/bash`
 
 
-## `for` Loop w/ `case` condition: Download files using wget
+## `for` Loop w/ `case` condition:
+This small script is to download the series of \*.pcaps from: [https://www.netresec.com/?page=MACCDC](https://www.netresec.com/?page=MACCDC)
+
+The filenames are as follows, where the "00005" file is named differently:
+
+- maccdc2012_00000.pcap.gz
+- maccdc2012_00001.pcap.gz
+- maccdc2012_00002.pcap.gz
+- maccdc2012_00003.pcap.gz
+- maccdc2012_00004.pcap.gz
+- maccdc2012_00005_fixed.pcap.gz
+- maccdc2012_00006.pcap.gz
+- maccdc2012_00007.pcap.gz
+- maccdc2012_00008.pcap.gz
+- maccdc2012_00009.pcap.gz
+- maccdc2012_00010.pcap.gz
+- maccdc2012_00011.pcap.gz
+- maccdc2012_00012.pcap.gz
+- maccdc2012_00013.pcap.gz
+- maccdc2012_00014.pcap.gz
+- maccdc2012_00015.pcap.gz
+- maccdc2012_00016.pcap.gz
+
 ```bash
 #!/bin/bash
 
