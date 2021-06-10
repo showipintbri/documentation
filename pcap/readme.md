@@ -125,12 +125,22 @@ c:\Program Files\Wireshark>tshark.exe -r "testtest.pcapng" -Y "ip.src==192.168.1
 ```
 
 ## Change the Timestamp of packets
-1. Find the current timestamp of the first and last packet in epoch: `capinfos.exe -s [filename.pcap]`
+**Scenario:** You have an old PCAP from 2012 and you want to modify the timestamps of each packet to make it look like it was captured today.
+
+1. Find the current timestamp of the first and last packet in epoch: 
+ - **Windows:** `capinfos.exe -eS [filename.pcap]`
+ - **Linux:** `capinfos -eS [filename.pcap]`
+ > `-e` display the capture end time  
+ > `-S` display start and end times as seconds
+
 2. Determine your current time in epoch:
   - **Windows:** `powershell -command "(New-TimeSpan -Start (Get-Date "01/01/1970") -End (Get-Date)).TotalSeconds"`
-  - **Linux:** `date` 
-3. Subtract the epoch from the last packet in the pcap from the current epoch time. This becomes your offset.
-4. Using `editcap`, add the offset to every timestamp for every packet in the pcap: `editcap.exe -t [offset] -F [pcap|pcapng] <in-file.pcap> <out-file.pcap>`
+  - **Linux:** `date +%s` 
+4. Subtract the last packet in the pcap epoch time from the current epoch time. This becomes your offset.
+5. Using `editcap`, add the offset to every timestamp for every packet in the pcap: 
+```
+editcap.exe -t [offset] -F [pcap|pcapng] <in-file.pcap> <out-file.pcap>
+```
 
 
 
