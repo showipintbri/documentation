@@ -11,9 +11,9 @@ A collection of references because I always have to look them up.
 For both `iperf` & `iperf3`:
 - [https://iperf.fr/iperf-download.php](https://iperf.fr/iperf-download.php)
 
-![](iperf image screenshot)
+![iperf-download](image.png)
 
-Most linux package managers have iperf in their inventory.
+Most linux package managers have iperf & iperf3 in their inventory.
 
 **WARNING:** Make sure to note the package name. There is a big code base difference from `iperf` to `iperf3`.
 
