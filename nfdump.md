@@ -49,3 +49,13 @@ From within in the new Git repository directory:
 ./configure --enable-readpcap --enable-nfpcapd && make && make install
 ```
 
+Executables will be in your `current directory/bin`:
+```
+nfanon
+nfcapd
+nfdump
+nfexpire
+nfpcapd
+nfreplay
+```
+
