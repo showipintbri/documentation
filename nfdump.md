@@ -43,5 +43,9 @@ From within in the new Git repository directory:
 ./make
 
 ./make install
+
+# OR
+
+./configure --enable-readpcap --enable-nfpcapd && make && make install
 ```
 
