@@ -40,13 +40,13 @@ From within in the new Git repository directory:
 # --enable-readpcap: Enables nfcapd to read a *.pcap
 # --enable-nfpcapd:  Created the nfpcapd binary in the bin directory
 
-./make
+sudo make
 
-./make install
+sudo make install
 
 # OR
 
-./configure --enable-readpcap --enable-nfpcapd && make && make install
+./configure --enable-readpcap --enable-nfpcapd && sudo make && sudo make install
 ```
 
 Executables will be in your `current directory/bin`:
